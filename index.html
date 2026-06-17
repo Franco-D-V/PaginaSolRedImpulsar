@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RED Impulsar - Centro Psicopedagógico</title>
+    
+    <!-- Fuentes de Google: Poppins (Títulos) y Open Sans (Texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           VARIABLES Y RESET
+           ========================================= */
+        :root {
+            --color-primary: #2C4A7C;   /* Azul Oscuro */
+            --color-secondary: #F5A623; /* Naranja Cálido */
+            --color-accent: #F9D423;    /* Amarillo Dorado */
+            --color-white: #ffffff;
+            --color-light-gray: #f8f9fa;
+            --color-text: #333333;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            --shadow-card: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }g
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Botones Generales */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: var(--font-heading);
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--color-secondary);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background-color: #d48e1b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 166, 35, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--color-white);
+            color: var(--color-white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-dark {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .btn-dark:hover {
+            background-color: #1a3050;
+            transform: translateY(-2px);
+        }
+
+        /* Títulos de Sección */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--color-secondary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* =========================================
+           HEADER & NAV
+           ========================================= */
+        header {
+            background-color: var(--color-white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--color-secondary);
+            font-size: 1.8rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--color-primary);
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            color: var(--color-secondary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: var(--transition);
+            background-color: var(--color-primary);
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 74, 124, 0.85), rgba(44, 74, 124, 0.7)), 
+                        url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--color-white);
+            margin-top: 0;
+            padding-top: 80px; /* Offset for fixed header */
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--color-white);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* =========================================
+           SERVICIOS
+           ========================================= */
+        .services {
+            background-color: var(--color-light-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--color-white);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            text-align: center;
+            border-bottom: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--color-secondary);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--color-secondary);
+            margin-bottom: 20px;
+            background: rgba(245, 166, 35, 0.1);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .service-card ul {
+            text-align: left;
+            margin-top: 15px;
+            padding-left: 10px;
+        }
+
+        .service-card li {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #555;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .service-card li::before {
+            content: '•';
+            color: var(--color-secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* =========================================
+           SOBRE NOSOTROS
+           ========================================= */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img {
+            position: relative;
+        }
+
+        .about-img img {
+            border-radius: 15px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .about-img::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100px;
+            height: 100px;
+            background-color: var(--color-accent);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .values-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .value-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .value-item i {
+            color: var(--color-secondary);
+        }
+
+        /* =========================================
+           TESTIMONIOS
+           ========================================= */
+        .testimonials {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .testimonials .section-title h2 {
+            color: var(--color-white);
+        }
+
+        .testimonials .section-title p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stars {
+            color: var(--color-accent);
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .client-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--color-secondary);
+        }
+
+        .client-details h4 {
+            color: var(--color-white);
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .client-details span {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+        }
+
+        /* =========================================
+           CONTACTO
+           ========================================= */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            background: var(--color-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .contact-info {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .info-item i {
+            color: var(--color-secondary);
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: var(--color-white);
+        }
+
+        .social-links a:hover {
+            background: var(--color-secondary);
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            height: 120px;
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            background-color: #1a3050;
+            color: rgba(255,255,255,0.7);
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--color-white);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-secondary);
+            padding-left: 5px;
+            transition: var(--transition);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* =========================================
+           WHATSAPP FLOTANTE
+           ========================================= */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20ba5a;
+        }
+
+        /* =========================================
+           ANIMACIONES SCROLL
+           ========================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           MEDIA QUERIES (RESPONSIVE)
+           ========================================= */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.8rem; }
+            .about-content { grid-template-columns: 1fr; }
+            .contact-container { grid-template-columns: 1fr; }
+            .about-img { order: -1; margin-bottom: 30px; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: block; z-index: 1001; }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                flex-direction: column;
+                background-color: var(--color-white);
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: 0.3s;
+                justify-content: center;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active { left: 0; }
+            .nav-item { margin: 20px 0; }
+            
+            .hero h1 { font-size: 2.2rem; }
+            .section-title h2 { font-size: 2rem; }
+            
+            .values-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navegación -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-brain"></i>
+                RED Impulsar
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li class="nav-item"><a href="#nosotros" class="nav-link">Nosotros</a></li>
+                    <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
+                    <li class="nav-item">
+                        <a href="#contacto" class="btn btn-primary">Agendar Consulta</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container hero-content reveal">
+            <h1>Potenciamos el aprendizaje, transformamos vidas</h1>
+            <p>Centro Psicopedagógico especializado en evaluación cognitiva y tratamientos personalizados para niños, adolescentes y adultos.</p>
+            <div class="hero-buttons">
+                <a href="#servicios" class="btn btn-primary">Conoce nuestros servicios</a>
+                <a href="#contacto" class="btn btn-outline">Contactar ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="section-padding services">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Nuestros Servicios Especializados</h2>
+                <p>Abordaje integral centrado en las necesidades únicas de cada paciente.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Servicio 1 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-pencil"></i>
+                    </div>
+                    <h3>Evaluaciones Cognitivas</h3>
+                    <ul>
+                        <li>Diagnóstico completo de funciones cognitivas</li>
+                        <li>Identificación de fortalezas y áreas de mejora</li>
+                        <li>Informes detallados para orientación educativa</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-hands-helping"></i>
+                    </div>
+                    <h3>Tratamientos Psicopedagógicos</h3>
+                    <ul>
+                        <li>Intervención personalizada según necesidades</li>
+                        <li>Estrategias de aprendizaje adaptadas</li>
+                        <li>Seguimiento continuo del progreso</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3>Estimulación Cognitiva</h3>
+                    <ul>
+                        <li>Programas de estimulación mental</li>
+                        <li>Recuperación de funciones cognitivas</li>
+                        <li>Ejercicios especializados y dinámicos</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 4 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3>Orientación Vocacional</h3>
+                    <ul>
+                        <li>Descubrimiento de intereses y habilidades</li>
+                        <li>Asesoramiento en elección de carrera</li>
+                        <li>Herramientas para toma de decisiones</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros -->
+    <section id="nosotros" class="section-padding">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <h3>Más que un centro, somos tu aliado en el aprendizaje</h3>
+                    <p>En <strong>RED Impulsar</strong>, creemos que cada persona tiene un potencial único esperando ser descubierto. Con años de experiencia y un enfoque humanista, nos dedicamos a acompañar a pacientes y familias en el proceso de desarrollo integral.</p>
+                    <p>Nuestro equipo multidisciplinario trabaja con calidez y rigor científico para superar barreras de aprendizaje y potenciar capacidades.</p>
+                    
+                    <div class="values-list">
+                        <div class="value-item"><i class="fa-solid fa-check-circle"></i> Enfoque Personalizado</div>
+                        <div class="value-item"><i class="fa-solid fa-check-circle"></i> Profesionales Certificados</div>
+                        <div class="value-item"><i class="fa-solid fa-check-circle"></i> Ambiente Acogedor</div>
+                        <div class="value-item"><i class="fa-solid fa-check-circle"></i> Tecnología Actualizada</div>
+                    </div>
+                </div>
+                <div class="about-img reveal">
+                    <!-- Imagen placeholder de ambiente profesional/acogedor -->
+                    <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Equipo RED Impulsar">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="section-padding testimonials">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Lo que dicen las familias</h2>
+                <p>Historias de éxito y transformación en RED Impulsar.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- Testimonio 1 -->
+                <div class="testimonial-card reveal">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Llegamos con mucha preocupación por el rendimiento escolar de mi hijo. En RED Impulsar no solo mejoraron sus notas, sino su autoestima. ¡Gracias infinitas!"</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Madre" class="client-img">
+                        <div class="client-details">
+                            <h4>María González</h4>
+                            <span>Madre de Lucas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 2 -->
+                <div class="testimonial-card reveal">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"La orientación vocacional fue clave para decidir mi futuro. Me sentí escuchada y comprendida en todo momento. Altamente recomendado."</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Paciente" class="client-img">
+                        <div class="client-details">
+                            <h4>Sofía Ramírez</h4>
+                            <span>Paciente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 3 -->
+                <div class="testimonial-card reveal">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="testimonial-text">"El trato es excepcionalmente humano. Los profesionales saben exactamente cómo conectar con los niños. Un lugar de confianza total."</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Padre" class="client-img">
+                        <div class="client-details">
+                            <h4>Carlos Mendez</h4>
+                            <span>Padre de Ana</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section-padding">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Contáctanos</h2>
+                <p>Da el primer paso hacia el cambio. Estamos aquí para ayudarte.</p>
+            </div>
+
+            <div class="contact-container reveal">
+                <!-- Información -->
+                <div class="contact-info">
+                    <div>
+                        <h3>Información de Contacto</h3>
+                        <p style="margin-bottom: 30px; opacity: 0.9;">Visítanos o escríbenos para agendar tu primera consulta.</p>
+                        
+                        <div class="info-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <h4>Ubicación</h4>
+                                <p>Av. Principal 123, Oficina 405<br>Ciudad, País</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <h4>Teléfono</h4>
+                                <p>+55 1234 5678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>contacto@redimpulsar.com</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <i class="fa-solid fa-clock"></i>
+                            <div>
+                                <h4>Horarios</h4>
+                                <p>Lun - Vie: 9:00 AM - 7:00 PM<br>Sáb: 9:00 AM - 1:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Formulario -->
+                <div class="contact-form">
+                    <form id="formContacto">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo</label>
+                            <input type="text" id="nombre" class="form-control" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" class="form-control" placeholder="tu@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" class="form-control" placeholder="+55 ..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" class="form-control" placeholder="¿En qué podemos ayudarte?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-dark" style="width: 100%;">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="color: white; margin-bottom: 20px; display:inline-block;">
+                        <i class="fa-solid fa-brain" style="color: var(--color-secondary);"></i>
+                        RED Impulsar
+                    </a>
+                    <p>Centro psicopedagógico dedicado a potenciar el aprendizaje y transformar vidas mediante estrategias personalizadas.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Libro de Reclamaciones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 RED Impulsar - Centro Psicopedagógico. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante WhatsApp -->
+    <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank" aria-label="Chat en WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // 1. Menú Móvil
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        navLinks.forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }));
+
+        // 2. Animación al hacer Scroll (Reveal)
+        window.addEventListener('scroll', reveal);
+
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var revealTop = reveals[i].getBoundingClientRect().top;
+                var revealPoint = 150;
+
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                } else {
+                    // Opcional: remover la clase si quieres que la animación se repita al subir
+                    // reveals[i].classList.remove('active');
+                }
+            }
+        }
+        
+        // Activar reveal al cargar por si hay elementos ya visibles
+        reveal();
+
+        // 3. Manejo simple del formulario (Demo)
+        document.getElementById('formContacto').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por contactarnos! Nos pondremos en contacto contigo pronto.');
+            this.reset();
+        });
+
+        // 4. Efecto suave en Header al hacer scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.1)";
+            } else {
+                header.style.boxShadow = "0 2px 15px rgba(0,0,0,0.05)";
+            }
+        });
+    </script>
+</body>
+</html>
